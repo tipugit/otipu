@@ -1,39 +1,20 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
   --font-size: 16px;
-  --background: #f8f9ff;
-  --foreground: #07091a;
+  --background: #ffffff;
+  --foreground: #0f172a;
   --card: #ffffff;
-  --card-foreground: #07091a;
-  --primary: #2563eb;
+  --card-foreground: #0f172a;
+  --primary: #1d4ed8;
   --primary-foreground: #ffffff;
-  --secondary: #7c3aed;
-  --muted: #eef0ff;
-  --muted-foreground: #5b6480;
-  --accent: #06b6d4;
-  --border: rgba(15, 23, 80, 0.08);
-  --ring: #2563eb;
-  --radius: 1.25rem;
-  --glow: rgba(37, 99, 235, 0.35);
-  --coral: #ff6b4a;
-}
-
-.dark {
-  --background: #030508;
-  --foreground: #eef0ff;
-  --card: #0a0e1a;
-  --card-foreground: #eef0ff;
-  --primary: #4f8ef7;
-  --secondary: #9b6dff;
-  --muted: #0e1226;
-  --muted-foreground: #7a85a8;
-  --accent: #22d3ee;
-  --border: rgba(79, 142, 247, 0.12);
-  --ring: #4f8ef7;
-  --glow: rgba(79, 142, 247, 0.4);
+  --secondary: #f1f5f9;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --accent: #0ea5e9;
+  --border: #e2e8f0;
+  --ring: #1d4ed8;
+  --radius: 0.75rem;
 }
 
 @theme inline {
@@ -49,11 +30,10 @@
   --color-accent: var(--accent);
   --color-border: var(--border);
   --color-ring: var(--ring);
-  --color-coral: var(--coral);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
 }
 
 @layer base {
@@ -68,39 +48,22 @@
 
   body {
     @apply bg-background text-foreground antialiased overflow-x-hidden;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   ::selection {
-    background: rgba(37, 99, 235, 0.25);
+    background: rgba(29, 78, 216, 0.12);
     color: var(--foreground);
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 45%, #06b6d4 85%, #ff6b4a 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .section-padding {
+    @apply py-20 lg:py-28;
   }
 
-  .text-gradient-warm {
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .glass {
-    background: color-mix(in srgb, var(--card) 72%, transparent);
-    backdrop-filter: blur(20px) saturate(1.4);
-  }
-
-  .grid-bg {
-    background-image:
-      linear-gradient(color-mix(in srgb, var(--primary) 8%, transparent) 1px, transparent 1px),
-      linear-gradient(90deg, color-mix(in srgb, var(--primary) 8%, transparent) 1px, transparent 1px);
-    background-size: 64px 64px;
+  .container-wide {
+    @apply max-w-6xl mx-auto px-5 sm:px-8;
   }
 }
 
