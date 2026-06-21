@@ -16,11 +16,6 @@ export default function App() {
   const [dark, setDark] = useState(true);
 
   useEffect(() => {
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setDark(prefersDark);
-  }, []);
-
-  useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
   }, [dark]);
 
