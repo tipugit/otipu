@@ -8,8 +8,8 @@ function Counter({ value, suffix, active }: { value: number; suffix: string; act
 
   useEffect(() => {
     if (!active) return;
-    const duration = 1500;
-    const steps = 40;
+    const duration = 1800;
+    const steps = 50;
     const step = value / steps;
     let current = 0;
     const timer = setInterval(() => {
@@ -28,6 +28,7 @@ function Counter({ value, suffix, active }: { value: number; suffix: string; act
     value >= 1000
       ? `${(Math.min(count, value) / 1000).toFixed(count >= value ? 1 : 0)}k`
       : count;
+
   return (
     <>
       {display}
@@ -36,23 +37,35 @@ function Counter({ value, suffix, active }: { value: number; suffix: string; act
   );
 }
 
+const COLORS = ["#3B82F6", "#8B5CF6", "#F472B6"];
+
 export function StatsSection() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="py-16 lg:py-20 border-y border-border bg-muted/30">
+    <section
+      ref={ref}
+      className="py-16 lg:py-20 border-y border-border relative overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(90deg, rgba(59,130,246,0.05), rgba(139,92,246,0.05), rgba(244,114,182,0.05))",
+      }}
+    >
       <div className="container-wide">
         <Reveal className="text-center mb-10">
-          <SectionLabel>At a glance</SectionLabel>
+          <SectionLabel>Impact</SectionLabel>
         </Reveal>
-        <div className="grid grid-cols-3 gap-6 lg:gap-12 max-w-3xl mx-auto">
+        <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto">
           {STATS.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 0.05} className="text-center">
-              <p className="text-3xl sm:text-4xl font-semibold text-foreground tracking-tight">
+            <Reveal key={stat.label} delay={i * 0.08} className="text-center">
+              <p
+                className="text-4xl sm:text-5xl font-bold font-display tracking-tight"
+                style={{ color: COLORS[i] }}
+              >
                 <Counter value={stat.value} suffix={stat.suffix} active={inView} />
               </p>
-              <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
+              <p className="text-sm text-muted-foreground font-body mt-2">{stat.label}</p>
             </Reveal>
           ))}
         </div>
