@@ -68,7 +68,7 @@ export function MagneticButton({
       href={href}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold font-body transition-transform duration-200 ${styles[variant]}`}
+      className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold font-body transition-transform duration-200 w-full sm:w-auto min-h-[48px] ${styles[variant]}`}
       style={
         variant === "primary"
           ? { background: "linear-gradient(135deg, #3B82F6, #8B5CF6, #F472B6)" }
@@ -89,6 +89,39 @@ export function MagneticButton({
       )}
       <span className="relative z-10 flex items-center gap-2">{children}</span>
     </a>
+  );
+}
+
+export function AnimatedHeadline() {
+  const words = [
+    { word: "Creating", className: "text-foreground" },
+    { word: "Meaningful", className: "text-gradient animate-gradient-shift" },
+    { word: "Digital", className: "text-gradient animate-gradient-shift" },
+    { word: "Solutions", className: "text-gradient animate-gradient-shift" },
+    { word: "for", className: "text-foreground" },
+    { word: "Everyday", className: "text-gradient-gold animate-gradient-shift" },
+    { word: "Life", className: "text-gradient-gold animate-gradient-shift" },
+  ];
+
+  return (
+    <h1 className="text-[1.75rem] min-[400px]:text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold font-display leading-[1.18] tracking-tight">
+      {words.map((w, i) => (
+        <span key={w.word} className="inline-block overflow-hidden mr-[0.28em] last:mr-0">
+          <motion.span
+            initial={{ opacity: 0, y: 36, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{
+              duration: 0.5,
+              delay: 0.06 + i * 0.065,
+              ease: [0.23, 1, 0.32, 1],
+            }}
+            className={`inline-block ${w.className}`}
+          >
+            {w.word}
+          </motion.span>
+        </span>
+      ))}
+    </h1>
   );
 }
 
@@ -137,9 +170,18 @@ export function TiltCard({
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
   const [glow, setGlow] = useState({ x: 50, y: 50 });
+  const [canTilt, setCanTilt] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover) and (min-width: 768px)");
+    setCanTilt(mq.matches);
+    const fn = () => setCanTilt(mq.matches);
+    mq.addEventListener("change", fn);
+    return () => mq.removeEventListener("change", fn);
+  }, []);
 
   const onMove = (e: MouseEvent) => {
-    if (!ref.current) return;
+    if (!canTilt || !ref.current) return;
     const r = ref.current.getBoundingClientRect();
     const px = (e.clientX - r.left) / r.width;
     const py = (e.clientY - r.top) / r.height;
@@ -158,10 +200,10 @@ export function TiltCard({
           setHovered(false);
         }}
         style={{
-          transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+          transform: canTilt ? `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` : undefined,
           transition: hovered ? "transform 0.1s ease" : "transform 0.5s cubic-bezier(0.23,1,0.32,1)",
           transformStyle: "preserve-3d",
-          boxShadow: hovered
+          boxShadow: hovered && canTilt
             ? `0 24px 60px ${glowColor}30, 0 0 0 1px ${glowColor}40`
             : "0 8px 32px rgba(0,0,0,0.12)",
         }}

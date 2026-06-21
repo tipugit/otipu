@@ -13,6 +13,10 @@ export default function App() {
   const [dark, setDark] = useState(true);
 
   useEffect(() => {
+    document.documentElement.classList.add("dark");
+  }, []);
+
+  useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
   }, [dark]);
 

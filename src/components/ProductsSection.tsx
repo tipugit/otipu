@@ -27,7 +27,7 @@ export function ProductsSection() {
           </Reveal>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {APPS.map((app, i) => (
             <Reveal key={app.id} delay={i * 0.08}>
               <TiltCard glowColor={app.color}>

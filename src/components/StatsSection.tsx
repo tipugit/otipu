@@ -56,7 +56,7 @@ export function StatsSection() {
         <Reveal className="text-center mb-10">
           <SectionLabel>Impact</SectionLabel>
         </Reveal>
-        <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto">
+        <div className="grid grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto">
           {STATS.map((stat, i) => (
             <Reveal key={stat.label} delay={i * 0.08} className="text-center">
               <p
