@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
@@ -8,17 +8,109 @@
       name="description"
       content="Otipu creates meaningful digital solutions for everyday life — practical software from roommate management to AI productivity tools."
     />
-    <meta name="theme-color" content="#06080f" />
+    <meta name="theme-color" content="#f7f8fc" />
     <title>Otipu — Meaningful Digital Solutions for Everyday Life</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@400;600&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@400;600&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8fc;
+        --fg: #0f172a;
+        --muted: #64748b;
+        --primary: #4f46e5;
+      }
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      #root { min-height: 100dvh; }
+      #boot {
+        min-height: 100dvh;
+        padding: calc(4.5rem + env(safe-area-inset-top)) 1rem 2rem;
+        background:
+          radial-gradient(ellipse 80% 50% at 20% -10%, rgba(79, 70, 229, 0.12), transparent),
+          radial-gradient(ellipse 60% 40% at 90% 10%, rgba(236, 72, 153, 0.1), transparent),
+          var(--bg);
+      }
+      #boot-nav {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+        display: flex; align-items: center; justify-content: space-between;
+        height: 3.5rem; padding: env(safe-area-inset-top) 1rem 0;
+        background: rgba(247, 248, 252, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+      }
+      #boot-logo {
+        display: flex; align-items: center; gap: 0.5rem;
+        font-family: Outfit, system-ui, sans-serif;
+        font-weight: 800; font-size: 1.05rem; text-decoration: none; color: var(--fg);
+      }
+      #boot-mark {
+        width: 2rem; height: 2rem; border-radius: 0.6rem;
+        background: linear-gradient(135deg, #4f46e5, #ec4899);
+        display: flex; align-items: center; justify-content: center;
+        color: #fff; font-weight: 800; font-size: 0.85rem;
+      }
+      #boot-badge {
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        padding: 0.35rem 0.75rem; border-radius: 999px;
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        background: rgba(255, 255, 255, 0.7);
+        font-size: 0.65rem; color: var(--muted); margin-bottom: 1.25rem;
+      }
+      #boot-dot { width: 6px; height: 6px; border-radius: 50%; background: #10b981; }
+      #boot h1 {
+        font-family: Outfit, system-ui, sans-serif;
+        font-weight: 800; font-size: clamp(1.65rem, 5vw, 2.75rem);
+        line-height: 1.18; margin: 0 0 1rem; letter-spacing: -0.02em;
+      }
+      #boot .accent {
+        background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      #boot p { color: var(--muted); font-size: 1rem; line-height: 1.6; max-width: 32rem; margin: 0 0 1.5rem; }
+      #boot-shimmer {
+        height: 2.75rem; width: 10rem; border-radius: 0.75rem;
+        background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.2s infinite;
+      }
+      @keyframes shimmer { to { background-position: -200% 0; } }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="boot" aria-busy="true" aria-label="Loading">
+        <div id="boot-nav">
+          <a id="boot-logo" href="#"><span id="boot-mark">O</span> otipu</a>
+        </div>
+        <div id="boot-badge"><span id="boot-dot"></span> otipu.com · est. 2024</div>
+        <h1>
+          Creating <span class="accent">Meaningful Digital Solutions</span> for
+          <span class="accent">Everyday Life</span>
+        </h1>
+        <p>Practical software for everyday life — built with care.</p>
+        <div id="boot-shimmer"></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

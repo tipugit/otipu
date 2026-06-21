@@ -103,16 +103,43 @@ export function AnimatedHeadline() {
     { word: "Life", className: "text-gradient-gold animate-gradient-shift" },
   ];
 
+  const [useMotion, setUseMotion] = useState(false);
+
+  useEffect(() => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const mobile = window.matchMedia("(max-width: 767px)").matches;
+    setUseMotion(!reduced && !mobile);
+  }, []);
+
+  const headingClass =
+    "text-[1.75rem] min-[400px]:text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold font-display leading-[1.18] tracking-tight";
+
+  if (!useMotion) {
+    return (
+      <h1 className={headingClass}>
+        {words.map((w, i) => (
+          <span
+            key={w.word}
+            className={`hero-word inline-block mr-[0.28em] last:mr-0 ${w.className}`}
+            style={{ animationDelay: `${0.04 + i * 0.045}s` }}
+          >
+            {w.word}
+          </span>
+        ))}
+      </h1>
+    );
+  }
+
   return (
-    <h1 className="text-[1.75rem] min-[400px]:text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold font-display leading-[1.18] tracking-tight">
+    <h1 className={headingClass}>
       {words.map((w, i) => (
         <span key={w.word} className="inline-block overflow-hidden mr-[0.28em] last:mr-0">
           <motion.span
-            initial={{ opacity: 0, y: 36, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 0.5,
-              delay: 0.06 + i * 0.065,
+              duration: 0.45,
+              delay: 0.04 + i * 0.055,
               ease: [0.23, 1, 0.32, 1],
             }}
             className={`inline-block ${w.className}`}
