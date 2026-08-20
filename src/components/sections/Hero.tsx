@@ -2,47 +2,61 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { HERO_CAPABILITIES, HERO_WORDS } from "../../data/site";
-import { MagneticButton } from "../ui";
+import { MagneticButton, Reveal } from "../ui";
 import { HeroVisual } from "../visuals/HeroVisual";
-import { AnimatedGrid, GradientMesh, ParticleField } from "../effects";
+import { SoftAurora, ParticleField } from "../effects";
 
 export function Hero() {
   return (
     <section className="relative min-h-[100dvh] flex items-center pt-20 overflow-hidden">
-      <GradientMesh />
-      <AnimatedGrid />
+      <SoftAurora intensity="strong" />
       <ParticleField />
 
-      <div className="relative z-10 container-wide py-10 lg:py-16 w-full">
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-8 items-center">
-          <div>
-            <p className="font-mono-label text-[11px] font-bold uppercase tracking-[0.22em] text-primary mb-5">
-              Software Development & Digital Solutions
-            </p>
-            <Headline />
-            <p className="mt-5 mb-8 text-muted-foreground font-body text-base sm:text-lg leading-relaxed max-w-xl">
-              Otipu is a full-service technology partner helping businesses design, build, modernize
-              and scale powerful digital products, internal systems, enterprise software and digital
-              experiences.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <MagneticButton to="/contact" magnetic>
-                Start a Project <ArrowRight size={15} />
-              </MagneticButton>
-              <MagneticButton to="/services" variant="outline">
-                Explore Our Services
-              </MagneticButton>
-            </div>
-            <ul className="mt-8 flex flex-wrap gap-x-4 gap-y-2 text-[13px] font-medium text-muted-foreground">
-              {HERO_CAPABILITIES.map((item) => (
-                <li key={item} className="inline-flex items-center gap-2">
-                  <span className="w-1 h-1 rounded-full bg-primary/70" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+      <div className="relative z-10 container-wide py-12 lg:py-16 w-full">
+        <div className="grid lg:grid-cols-[1fr_0.92fr] gap-12 lg:gap-10 items-center">
+          <div className="max-w-xl">
+            <Reveal>
+              <p className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/60 backdrop-blur-md px-3.5 py-1.5 text-[11px] font-mono-label font-bold uppercase tracking-[0.18em] text-primary mb-6 shadow-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                Software Development & Digital Solutions
+              </p>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <Headline />
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mt-5 mb-8 text-muted-foreground font-body text-[0.98rem] sm:text-base leading-[1.75]">
+                Otipu is a full-service technology partner helping businesses design, build,
+                modernize and scale powerful digital products, internal systems, enterprise software
+                and digital experiences.
+              </p>
+            </Reveal>
+            <Reveal delay={0.18}>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <MagneticButton to="/contact" magnetic>
+                  Start a Project <ArrowRight size={15} />
+                </MagneticButton>
+                <MagneticButton to="/services" variant="outline">
+                  Explore Our Services
+                </MagneticButton>
+              </div>
+            </Reveal>
+            <Reveal delay={0.24}>
+              <ul className="mt-9 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                {HERO_CAPABILITIES.map((item) => (
+                  <li
+                    key={item}
+                    className="rounded-2xl border border-border/70 bg-white/55 backdrop-blur-sm px-3 py-2.5 text-[12px] font-semibold text-foreground/75"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
           </div>
-          <HeroVisual />
+          <Reveal delay={0.1} className="lg:justify-self-end w-full">
+            <HeroVisual />
+          </Reveal>
         </div>
       </div>
     </section>
@@ -62,7 +76,7 @@ function Headline() {
   const word = HERO_WORDS[index];
 
   return (
-    <h1 className="text-[2.05rem] min-[400px]:text-[2.4rem] sm:text-5xl lg:text-[3.35rem] font-extrabold font-display tracking-tight leading-[1.12]">
+    <h1 className="text-[2.1rem] min-[400px]:text-[2.45rem] sm:text-[3rem] lg:text-[3.15rem] font-extrabold font-display tracking-tight leading-[1.12]">
       We build{" "}
       <span className="relative inline-block min-w-[11ch] align-bottom">
         {reduced ? (
@@ -71,10 +85,10 @@ function Headline() {
           <AnimatePresence mode="wait">
             <motion.span
               key={word}
-              initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
+              initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: -12, filter: "blur(6px)" }}
-              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+              exit={{ opacity: 0, y: -14, filter: "blur(8px)" }}
+              transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
               className="text-gradient absolute left-0 top-0 whitespace-nowrap"
             >
               {word.toLowerCase()}
@@ -85,7 +99,7 @@ function Headline() {
           infrastructure
         </span>
       </span>
-      <span className="block">that move businesses</span>
+      <span className="block mt-1">that move businesses</span>
       <span className="block">forward.</span>
     </h1>
   );

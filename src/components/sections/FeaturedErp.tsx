@@ -6,8 +6,8 @@ import { GradientOrb } from "../effects";
 export function FeaturedErp() {
   return (
     <section className="section-padding relative overflow-hidden bg-navy text-white">
-      <GradientOrb className="-top-24 -right-16 w-80 h-80 opacity-30" color="#6d5ef6" />
-      <GradientOrb className="bottom-0 -left-20 w-72 h-72 opacity-20" color="#4f7cff" delay={2} />
+      <GradientOrb className="-top-24 -right-16 w-80 h-80 opacity-30" color="#6b5cff" />
+      <GradientOrb className="bottom-0 -left-20 w-72 h-72 opacity-20" color="#38c6ff" delay={2} />
       <div className="container-wide relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>

@@ -3,10 +3,14 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { CursorHalo } from "./CursorHalo";
 import { ScrollToTop } from "./ScrollToTop";
+import { SoftAurora } from "../effects";
 
 export function Layout() {
   return (
-    <div className="min-h-screen bg-background text-foreground font-body">
+    <div className="relative min-h-screen bg-background text-foreground font-body">
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden>
+        <SoftAurora intensity="subtle" className="opacity-60" />
+      </div>
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[70] focus:rounded-full focus:bg-navy focus:px-4 focus:py-2 focus:text-white"
@@ -15,11 +19,13 @@ export function Layout() {
       </a>
       <ScrollToTop />
       <CursorHalo />
-      <Navbar />
-      <main id="main">
-        <Outlet />
-      </main>
-      <Footer />
+      <div className="relative z-10">
+        <Navbar />
+        <main id="main">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }

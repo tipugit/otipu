@@ -19,7 +19,7 @@ export function Expertise({ hideHeader = false }: { hideHeader?: boolean }) {
             copy="Categories we work in, with the tools behind each one available on demand — not a logo wall."
           />
         )}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {EXPERTISE.map((cat, i) => {
             const expanded = open === cat.id;
             return (
