@@ -2,35 +2,40 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta
       name="description"
-      content="Otipu creates meaningful digital solutions for everyday life — practical software from roommate management to AI productivity tools."
+      content="Otipu is a full-service software development and digital solutions company. We design, build, modernize and scale products, internal systems, ERP platforms and digital experiences."
     />
-    <meta name="theme-color" content="#f7f8fc" />
-    <title>Otipu — Meaningful Digital Solutions for Everyday Life</title>
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content="Otipu — Software Development & Digital Solutions" />
+    <meta
+      property="og:description"
+      content="A technology partner for custom software, ERP systems, mobile apps, cloud infrastructure, automation and digital growth."
+    />
+    <meta property="og:type" content="website" />
+    <title>Otipu — Software Development & Digital Solutions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet"
       />
     </noscript>
     <style>
       :root {
         color-scheme: light;
-        --bg: #f7f8fc;
-        --fg: #0f172a;
-        --muted: #64748b;
-        --primary: #4f46e5;
+        --bg: #ffffff;
+        --fg: #0f1222;
+        --muted: #5c6178;
       }
       *, *::before, *::after { box-sizing: border-box; }
       html, body {
@@ -43,76 +48,48 @@
       #root { min-height: 100dvh; }
       #boot {
         min-height: 100dvh;
-        padding: calc(4.5rem + env(safe-area-inset-top)) 1rem 2rem;
+        padding: calc(4.5rem + env(safe-area-inset-top)) 1.25rem 2rem;
         background:
-          radial-gradient(ellipse 80% 50% at 20% -10%, rgba(79, 70, 229, 0.12), transparent),
-          radial-gradient(ellipse 60% 40% at 90% 10%, rgba(236, 72, 153, 0.1), transparent),
+          radial-gradient(ellipse 70% 50% at 80% 10%, rgba(109, 94, 246, 0.12), transparent),
+          radial-gradient(ellipse 50% 40% at 10% 90%, rgba(79, 124, 255, 0.08), transparent),
           var(--bg);
       }
       #boot-nav {
         position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-        display: flex; align-items: center; justify-content: space-between;
-        height: 3.5rem; padding: env(safe-area-inset-top) 1rem 0;
-        background: rgba(247, 248, 252, 0.92);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+        display: flex; align-items: center;
+        height: 4rem; padding: env(safe-area-inset-top) 1.25rem 0;
       }
       #boot-logo {
-        display: flex; align-items: center; gap: 0.5rem;
+        display: flex; align-items: center; gap: 0.6rem;
         font-family: Outfit, system-ui, sans-serif;
-        font-weight: 800; font-size: 1.05rem; text-decoration: none; color: var(--fg);
+        font-weight: 800; font-size: 1.1rem; text-decoration: none; color: var(--fg);
       }
       #boot-mark {
-        width: 2rem; height: 2rem; border-radius: 0.6rem;
-        background: linear-gradient(135deg, #4f46e5, #ec4899);
+        width: 2rem; height: 2rem; border-radius: 999px;
+        background: linear-gradient(135deg, #6d5ef6, #4f7cff);
         display: flex; align-items: center; justify-content: center;
-        color: #fff; font-weight: 800; font-size: 0.85rem;
+        color: #fff; font-weight: 700; font-size: 0.85rem;
       }
-      #boot-badge {
-        display: inline-flex; align-items: center; gap: 0.4rem;
-        padding: 0.35rem 0.75rem; border-radius: 999px;
-        border: 1px solid rgba(15, 23, 42, 0.08);
-        background: rgba(255, 255, 255, 0.7);
-        font-size: 0.65rem; color: var(--muted); margin-bottom: 1.25rem;
-      }
-      #boot-dot { width: 6px; height: 6px; border-radius: 50%; background: #10b981; }
       #boot h1 {
         font-family: Outfit, system-ui, sans-serif;
-        font-weight: 800; font-size: clamp(1.65rem, 5vw, 2.75rem);
-        line-height: 1.18; margin: 0 0 1rem; letter-spacing: -0.02em;
+        font-weight: 800; font-size: clamp(1.8rem, 5vw, 3rem);
+        line-height: 1.12; margin: 4rem 0 1rem; letter-spacing: -0.03em; max-width: 18ch;
       }
-      #boot .accent {
-        background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      #boot p { color: var(--muted); font-size: 1rem; line-height: 1.6; max-width: 32rem; margin: 0 0 1.5rem; }
-      #boot-shimmer {
-        height: 2.75rem; width: 10rem; border-radius: 0.75rem;
-        background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
-        background-size: 200% 100%;
-        animation: shimmer 1.2s infinite;
-      }
-      @keyframes shimmer { to { background-position: -200% 0; } }
+      #boot p { color: var(--muted); font-size: 1.05rem; line-height: 1.65; max-width: 36rem; }
     </style>
-    <script type="module" crossorigin src="./assets/index-DXI5tlrs.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/motion-C4CHF7LL.js">
-    <link rel="modulepreload" crossorigin href="./assets/icons-zySWQzDf.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-BXR623jG.css">
+    <script type="module" crossorigin src="/assets/index-DQUTnaEc.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/motion-CtkZLk_7.js">
+    <link rel="modulepreload" crossorigin href="/assets/icons-CVE-GpHm.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-BvuAkteT.css">
   </head>
   <body>
     <div id="root">
       <div id="boot" aria-busy="true" aria-label="Loading">
         <div id="boot-nav">
-          <a id="boot-logo" href="#"><span id="boot-mark">O</span> otipu</a>
+          <a id="boot-logo" href="/"><span id="boot-mark">o</span> otipu</a>
         </div>
-        <div id="boot-badge"><span id="boot-dot"></span> otipu.com · est. 2024</div>
-        <h1>
-          Creating <span class="accent">Meaningful Digital Solutions</span> for
-          <span class="accent">Everyday Life</span>
-        </h1>
-        <p>Practical software for everyday life — built with care.</p>
-        <div id="boot-shimmer"></div>
+        <h1>We build digital solutions that move businesses forward.</h1>
+        <p>Software development, ERP systems, cloud, automation and digital growth — under one roof.</p>
       </div>
     </div>
   </body>

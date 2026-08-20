@@ -1,88 +1,46 @@
-import { lazy, Suspense, useEffect, useState } from "react";
-import { Navbar } from "./components/Navbar";
-import { HeroSection } from "./components/Hero";
-import { MarqueeBand } from "./components/MarqueeBand";
-
-const StatsSection = lazy(() =>
-  import("./components/StatsSection").then((m) => ({ default: m.StatsSection }))
-);
-const ProductsSection = lazy(() =>
-  import("./components/ProductsSection").then((m) => ({ default: m.ProductsSection }))
-);
-const RoomlyShowcase = lazy(() =>
-  import("./components/RoomlyShowcase").then((m) => ({ default: m.RoomlyShowcase }))
-);
-const ServicesSection = lazy(() =>
-  import("./components/ServicesSection").then((m) => ({ default: m.ServicesSection }))
-);
-const CTASection = lazy(() =>
-  import("./components/CTASection").then((m) => ({ default: m.CTASection }))
-);
-const Footer = lazy(() => import("./components/Footer").then((m) => ({ default: m.Footer })));
-const CursorGlow = lazy(() =>
-  import("./components/ui").then((m) => ({ default: m.CursorGlow }))
-);
-
-function SectionFallback({ tall = false }: { tall?: boolean }) {
-  return (
-    <div
-      className={`container-wide ${tall ? "py-24" : "py-16"} animate-pulse`}
-      aria-hidden
-    >
-      <div className="h-4 w-24 bg-muted rounded mb-4" />
-      <div className="h-8 w-2/3 max-w-md bg-muted rounded mb-6" />
-      <div className="h-4 w-full max-w-lg bg-muted/70 rounded" />
-    </div>
-  );
-}
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Layout } from "./components/layout/Layout";
+import { HomePage } from "./pages/HomePage";
+import { CompanyPage } from "./pages/CompanyPage";
+import { ServicesPage } from "./pages/ServicesPage";
+import { ServiceDetailPage } from "./pages/ServiceDetailPage";
+import { ExpertisePage } from "./pages/ExpertisePage";
+import { SolutionsPage } from "./pages/SolutionsPage";
+import { ProcessPage } from "./pages/ProcessPage";
+import { IndustriesPage } from "./pages/IndustriesPage";
+import { WorkDetailPage, WorkPage } from "./pages/WorkPage";
+import { InsightsPage } from "./pages/InsightsPage";
+import { CareersPage } from "./pages/CareersPage";
+import { ContactPage } from "./pages/ContactPage";
+import { FaqsPage } from "./pages/FaqsPage";
+import { PrivacyPage, TermsPage } from "./pages/LegalPages";
+import { NotFoundPage } from "./pages/NotFoundPage";
 
 export default function App() {
-  const [dark, setDark] = useState(false);
-  const [showFx, setShowFx] = useState(false);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-  }, [dark]);
-
-  useEffect(() => {
-    const run = () => setShowFx(true);
-    if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(run, { timeout: 1200 });
-    } else {
-      setTimeout(run, 300);
-    }
-  }, []);
-
   return (
-    <div className="min-h-screen bg-background text-foreground font-body mesh-light">
-      {showFx && (
-        <Suspense fallback={null}>
-          <CursorGlow />
-        </Suspense>
-      )}
-      <Navbar dark={dark} toggle={() => setDark(!dark)} />
-      <main>
-        <HeroSection showFx={showFx} />
-        <MarqueeBand />
-        <Suspense fallback={<SectionFallback />}>
-          <StatsSection />
-        </Suspense>
-        <Suspense fallback={<SectionFallback tall />}>
-          <ProductsSection />
-        </Suspense>
-        <Suspense fallback={<SectionFallback tall />}>
-          <RoomlyShowcase />
-        </Suspense>
-        <Suspense fallback={<SectionFallback tall />}>
-          <ServicesSection />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
-          <CTASection />
-        </Suspense>
-      </main>
-      <Suspense fallback={<SectionFallback />}>
-        <Footer />
-      </Suspense>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/company" element={<CompanyPage />} />
+          <Route path="/about" element={<Navigate to="/company" replace />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/:slug" element={<ServiceDetailPage />} />
+          <Route path="/expertise" element={<ExpertisePage />} />
+          <Route path="/solutions" element={<SolutionsPage />} />
+          <Route path="/process" element={<ProcessPage />} />
+          <Route path="/industries" element={<IndustriesPage />} />
+          <Route path="/work" element={<WorkPage />} />
+          <Route path="/work/:slug" element={<WorkDetailPage />} />
+          <Route path="/insights" element={<InsightsPage />} />
+          <Route path="/careers" element={<CareersPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/faqs" element={<FaqsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
