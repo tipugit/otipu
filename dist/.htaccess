@@ -1,6 +1,30 @@
-RewriteEngine On
-RewriteBase /
-RewriteRule ^index\.html$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.html [L]
+# LiteSpeed / Apache — SPA + HTTPS helpers for otipu.com
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Force HTTPS (hosting may already do this; safe if duplicated)
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Prefer apex host
+  RewriteCond %{HTTP_HOST} ^www\.otipu\.com$ [NC]
+  RewriteRule ^ https://otipu.com%{REQUEST_URI} [L,R=301]
+
+  # Existing files/folders (assets, images) pass through
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # React Router: send all other paths to index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Fallback if rewrite module is restricted
+ErrorDocument 404 /index.html
+
+# Safer defaults for modern browsers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
