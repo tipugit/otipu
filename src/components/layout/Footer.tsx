@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { SITE } from "../../data/site";
+import { SITE, SOCIAL_LINKS } from "../../data/site";
 import { Logo, MagneticButton } from "../ui";
+import { Icon } from "../icons";
 
 const COLUMNS = [
   {
@@ -70,6 +71,20 @@ export function Footer() {
             <p className="mt-4 text-sm text-muted-foreground font-body leading-relaxed max-w-[16rem]">
               Software development and digital solutions for businesses that need more than a website.
             </p>
+            <div className="mt-5 flex items-center gap-2.5">
+              {SOCIAL_LINKS.map((s) => (
+                <a
+                  key={s.href}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/35 transition-colors"
+                >
+                  <Icon name={s.icon} size={16} />
+                </a>
+              ))}
+            </div>
             <p className="mt-6 text-xs text-muted-foreground/70 font-body">
               © {new Date().getFullYear()} {SITE.legalName}
             </p>

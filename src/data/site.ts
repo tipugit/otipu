@@ -12,25 +12,13 @@ export const NAV = [
   { label: "Home", href: "/" },
   { label: "Company", href: "/company" },
   { label: "Services", href: "/services", mega: "services" as const },
-  { label: "Expertise", href: "/expertise" },
-  { label: "Solutions", href: "/solutions", mega: "solutions" as const },
-  { label: "Process", href: "/process" },
-  { label: "Industries", href: "/industries" },
-  { label: "Case Studies", href: "/work" },
-  { label: "Insights", href: "/insights" },
-  { label: "Careers", href: "/careers" },
-  { label: "Contact", href: "/contact" },
-] as const;
-
-export const COMPACT_NAV = [
-  { label: "Home", href: "/" },
-  { label: "Company", href: "/company" },
-  { label: "Services", href: "/services", mega: "services" as const },
   { label: "Solutions", href: "/solutions", mega: "solutions" as const },
   { label: "Process", href: "/process" },
   { label: "Work", href: "/work" },
   { label: "Contact", href: "/contact" },
 ] as const;
+
+export const SOCIAL_LINKS = [{ label: "Facebook", href: "https://www.facebook.com/otipu", icon: "Facebook" }] as const;
 
 export const TRUST_BADGES = [
   "Business-Focused Engineering",

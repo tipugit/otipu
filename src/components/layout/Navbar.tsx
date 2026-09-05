@@ -2,7 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
-import { COMPACT_NAV, NAV } from "../../data/site";
+import { NAV } from "../../data/site";
 import { MEGA_SERVICES } from "../../data/services";
 import { MEGA_SOLUTIONS } from "../../data/content";
 import { useScrolled } from "../../lib/hooks";
@@ -40,14 +40,8 @@ export function Navbar() {
           <Logo tone={onDark ? "light" : "dark"} />
         </Link>
 
-        <nav className="hidden 2xl:flex flex-1 items-center justify-center gap-0.5" aria-label="Primary">
+        <nav className="hidden lg:flex flex-1 items-center justify-center gap-0.5" aria-label="Primary">
           {NAV.map((item) => (
-            <NavItem key={item.href} item={item} mega={mega} setMega={setMega} onDark={onDark} />
-          ))}
-        </nav>
-
-        <nav className="hidden lg:flex 2xl:hidden flex-1 items-center justify-center gap-0.5" aria-label="Primary">
-          {COMPACT_NAV.map((item) => (
             <NavItem key={item.href} item={item} mega={mega} setMega={setMega} onDark={onDark} />
           ))}
         </nav>

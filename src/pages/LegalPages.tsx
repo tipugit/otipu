@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { SITE } from "../data/site";
 import { PageHero, Reveal } from "../components/ui";
-import { useDocumentTitle } from "../lib/hooks";
+import { useSEO } from "../lib/hooks";
 
 const LAST_UPDATED = "September 4, 2026";
 
@@ -436,7 +436,10 @@ function LegalBlock({ block }: { block: Block }): ReactNode {
 }
 
 export function PrivacyPage() {
-  useDocumentTitle("Privacy Policy — Otipu");
+  useSEO({
+    title: "Privacy Policy — Otipu",
+    description: "How Otipu collects, uses and protects information in connection with this website.",
+  });
 
   return (
     <>
@@ -451,7 +454,10 @@ export function PrivacyPage() {
 }
 
 export function TermsPage() {
-  useDocumentTitle("Terms of Service — Otipu");
+  useSEO({
+    title: "Terms of Service — Otipu",
+    description: "The rules that govern your use of this website. Actual project work is governed by a separate signed agreement.",
+  });
 
   return (
     <>

@@ -1,10 +1,15 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "motion/react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { CursorHalo } from "./CursorHalo";
 import { ScrollToTop } from "./ScrollToTop";
+import { useReducedMotion } from "../../lib/hooks";
 
 export function Layout() {
+  const location = useLocation();
+  const reduced = useReducedMotion();
+
   return (
     <div className="relative min-h-screen bg-background text-foreground font-body">
       <a
@@ -18,7 +23,21 @@ export function Layout() {
       <div className="relative z-10">
         <Navbar />
         <main id="main">
-          <Outlet />
+          {reduced ? (
+            <Outlet />
+          ) : (
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={location.pathname}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <Outlet />
+              </motion.div>
+            </AnimatePresence>
+          )}
         </main>
         <Footer />
       </div>

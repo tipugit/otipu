@@ -1,8 +1,11 @@
 import { MagneticButton, PageHero, Reveal } from "../components/ui";
 import { WhyOtipu } from "../components/sections/WhyOtipu";
 import { Cta } from "../components/sections/Cta";
-import { useDocumentTitle } from "../lib/hooks";
+import { useSEO } from "../lib/hooks";
 import { ArrowRight } from "lucide-react";
+
+const DESCRIPTION =
+  "Otipu is a full-service technology partner. We help businesses, startups, organizations and enterprises design, build, modernize and scale digital products and the systems behind them.";
 
 const POINTS = [
   {
@@ -20,14 +23,14 @@ const POINTS = [
 ];
 
 export function CompanyPage() {
-  useDocumentTitle("Company — Otipu");
+  useSEO({ title: "Company — Otipu", description: DESCRIPTION });
 
   return (
     <>
       <PageHero
         eyebrow="Company"
         title="A software firm built to handle real business systems."
-        copy="Otipu is a full-service technology partner. We help businesses, startups, organizations and enterprises design, build, modernize and scale digital products and the systems behind them."
+        copy={DESCRIPTION}
       />
       <section className="pb-16 sm:pb-24">
         <div className="container-wide grid lg:grid-cols-3 gap-4">

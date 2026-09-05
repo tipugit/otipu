@@ -1,18 +1,21 @@
 import { SITE } from "../data/site";
 import { Cta } from "../components/sections/Cta";
 import { MagneticButton, PageHero, Reveal } from "../components/ui";
-import { useDocumentTitle } from "../lib/hooks";
+import { useSEO } from "../lib/hooks";
 import { ArrowRight } from "lucide-react";
 
+const DESCRIPTION =
+  "There are no open roles listed right now. If you are an experienced engineer, designer or operator and believe you would be a strong fit, we still want to hear from you.";
+
 export function CareersPage() {
-  useDocumentTitle("Careers — Otipu");
+  useSEO({ title: "Careers — Otipu", description: DESCRIPTION });
 
   return (
     <>
       <PageHero
         eyebrow="Careers"
         title="Build software that organizations actually run on."
-        copy="There are no open roles listed right now. If you are an experienced engineer, designer or operator and believe you would be a strong fit, we still want to hear from you."
+        copy={DESCRIPTION}
       />
       <section className="pb-16">
         <div className="container-wide grid lg:grid-cols-2 gap-4">

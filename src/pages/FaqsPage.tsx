@@ -1,10 +1,13 @@
 import { FAQS } from "../data/content";
 import { Cta } from "../components/sections/Cta";
 import { PageHero, Reveal } from "../components/ui";
-import { useDocumentTitle } from "../lib/hooks";
+import { useSEO } from "../lib/hooks";
 
 export function FaqsPage() {
-  useDocumentTitle("FAQs — Otipu");
+  useSEO({
+    title: "FAQs — Otipu",
+    description: "If your question is not here, write to us. We would rather a direct conversation than a long FAQ.",
+  });
 
   return (
     <>

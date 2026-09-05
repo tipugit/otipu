@@ -1,19 +1,18 @@
 import { INSIGHTS } from "../data/content";
 import { Cta } from "../components/sections/Cta";
 import { EmptyState, PageHero } from "../components/ui";
-import { useDocumentTitle } from "../lib/hooks";
+import { useSEO } from "../lib/hooks";
+
+const DESCRIPTION =
+  "Articles will appear here as they are written. The section is ready for a title, excerpt, category and date.";
 
 export function InsightsPage() {
-  useDocumentTitle("Insights — Otipu");
+  useSEO({ title: "Insights — Otipu", description: DESCRIPTION });
   const published = INSIGHTS.filter((i) => i.published);
 
   return (
     <>
-      <PageHero
-        eyebrow="Insights"
-        title="Notes on building software that has to last."
-        copy="Articles will appear here as they are written. The section is ready for a title, excerpt, category and date."
-      />
+      <PageHero eyebrow="Insights" title="Notes on building software that has to last." copy={DESCRIPTION} />
       <section className="pb-16">
         <div className="container-wide">
           {published.length === 0 ? (

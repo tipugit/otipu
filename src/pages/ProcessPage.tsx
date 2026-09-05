@@ -2,17 +2,20 @@ import { PROCESS_STEPS } from "../data/content";
 import { Process } from "../components/sections/Process";
 import { Cta } from "../components/sections/Cta";
 import { PageHero, Reveal } from "../components/ui";
-import { useDocumentTitle } from "../lib/hooks";
+import { useSEO } from "../lib/hooks";
+
+const DESCRIPTION =
+  "Every engagement is different in scope. The discipline stays the same: understand, plan, design, engineer, validate, launch, then keep improving.";
 
 export function ProcessPage() {
-  useDocumentTitle("Process — Otipu");
+  useSEO({ title: "Process — Otipu", description: DESCRIPTION });
 
   return (
     <>
       <PageHero
         eyebrow="Process"
         title="A path from the problem to a system in production."
-        copy="Every engagement is different in scope. The discipline is not: understand, plan, design, engineer, validate, launch, then keep improving."
+        copy={DESCRIPTION}
       />
       <Process hideHeader />
       <section className="pb-16">

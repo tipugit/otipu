@@ -11,10 +11,11 @@ import { Expertise } from "../components/sections/Expertise";
 import { SelectedWork } from "../components/sections/SelectedWork";
 import { Credibility } from "../components/sections/Credibility";
 import { Cta } from "../components/sections/Cta";
-import { useDocumentTitle } from "../lib/hooks";
+import { useSEO } from "../lib/hooks";
+import { SITE } from "../data/site";
 
 export function HomePage() {
-  useDocumentTitle("Otipu — Software Development & Digital Solutions");
+  useSEO({ title: "Otipu — Software Development & Digital Solutions", description: SITE.description });
 
   return (
     <>

@@ -27,9 +27,11 @@
     />
     <meta name="twitter:image" content="https://otipu.com/logo.png" />
     <link rel="canonical" href="https://otipu.com/" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <title>Otipu — Software Development & Digital Solutions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="/logo-mark.webp" as="image" type="image/webp" />
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
@@ -42,6 +44,23 @@
         rel="stylesheet"
       />
     </noscript>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Otipu",
+        "legalName": "Otipu, Inc.",
+        "url": "https://otipu.com",
+        "logo": "https://otipu.com/logo.png",
+        "description": "Otipu is a full-service technology partner helping businesses design, build, modernize and scale digital products, internal systems, enterprise software and digital experiences.",
+        "email": "hello@otipu.com",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "hello@otipu.com",
+          "contactType": "customer support"
+        }
+      }
+    </script>
     <style>
       :root {
         color-scheme: light;
@@ -93,7 +112,7 @@
     <div id="root">
       <div id="boot" aria-busy="true" aria-label="Loading">
         <div id="boot-nav">
-          <a id="boot-logo" href="/"><img id="boot-mark" src="/logo.png" alt="" width="32" height="32" /> otipu</a>
+          <a id="boot-logo" href="/"><img id="boot-mark" src="/logo-mark.png" alt="" width="32" height="32" /> otipu</a>
         </div>
         <h1>We build digital solutions that move businesses forward.</h1>
         <p>Software development, ERP systems, cloud, automation and digital growth — under one roof.</p>

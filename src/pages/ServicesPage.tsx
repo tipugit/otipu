@@ -2,18 +2,17 @@ import { GROWTH_SERVICES, SERVICES } from "../data/services";
 import { PageHero, SectionHeader } from "../components/ui";
 import { ServiceCard } from "../components/sections/Services";
 import { Cta } from "../components/sections/Cta";
-import { useDocumentTitle } from "../lib/hooks";
+import { useSEO } from "../lib/hooks";
+
+const DESCRIPTION =
+  "From custom software and ERP platforms to cloud, security, design and digital growth — the capabilities required to take a system from idea to production, then keep it moving.";
 
 export function ServicesPage() {
-  useDocumentTitle("Services — Otipu");
+  useSEO({ title: "Services — Otipu", description: DESCRIPTION });
 
   return (
     <>
-      <PageHero
-        eyebrow="Services"
-        title="End-to-end software development and digital solutions."
-        copy="From custom software and ERP platforms to cloud, security, design and digital growth — the capabilities required to take a system from idea to production, then keep it moving."
-      />
+      <PageHero eyebrow="Services" title="End-to-end software development and digital solutions." copy={DESCRIPTION} />
       <section className="pb-8">
         <div className="container-wide">
           <SectionHeader align="left" eyebrow="Software" title="Build and modernize the product." />

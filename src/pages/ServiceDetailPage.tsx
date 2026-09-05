@@ -4,14 +4,17 @@ import { getService, ALL_SERVICES } from "../data/services";
 import { Icon } from "../components/icons";
 import { MagneticButton, PageHero } from "../components/ui";
 import { Cta } from "../components/sections/Cta";
-import { useDocumentTitle } from "../lib/hooks";
+import { useSEO } from "../lib/hooks";
 import { ServiceCard } from "../components/sections/Services";
 
 export function ServiceDetailPage() {
   const { slug } = useParams();
   const service = slug ? getService(slug) : undefined;
 
-  useDocumentTitle(service ? `${service.title} — Otipu` : "Services — Otipu");
+  useSEO({
+    title: service ? `${service.title} — Otipu` : "Services — Otipu",
+    description: service ? service.description : "Browse Otipu's software development and digital solution services.",
+  });
 
   if (!service) return <Navigate to="/services" replace />;
 

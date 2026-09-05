@@ -3,18 +3,17 @@ import { CASE_STUDIES, publishedCaseStudies } from "../data/content";
 import { SelectedWork } from "../components/sections/SelectedWork";
 import { Cta } from "../components/sections/Cta";
 import { PageHero } from "../components/ui";
-import { useDocumentTitle } from "../lib/hooks";
+import { useSEO } from "../lib/hooks";
+
+const WORK_DESCRIPTION =
+  "When a project can be discussed publicly, it will appear here with the problem, the system we built, and the outcome — without invented metrics.";
 
 export function WorkPage() {
-  useDocumentTitle("Case Studies — Otipu");
+  useSEO({ title: "Case Studies — Otipu", description: WORK_DESCRIPTION });
 
   return (
     <>
-      <PageHero
-        eyebrow="Case studies"
-        title="Selected work"
-        copy="When a project can be discussed publicly, it will appear here with the problem, the system we built, and the outcome — without invented metrics."
-      />
+      <PageHero eyebrow="Case studies" title="Selected work" copy={WORK_DESCRIPTION} />
       <SelectedWork hideHeader />
       <Cta />
     </>
@@ -24,7 +23,10 @@ export function WorkPage() {
 export function WorkDetailPage() {
   const { slug } = useParams();
   const study = publishedCaseStudies().find((c) => c.slug === slug);
-  useDocumentTitle(study ? `${study.title} — Otipu` : "Case Studies — Otipu");
+  useSEO({
+    title: study ? `${study.title} — Otipu` : "Case Studies — Otipu",
+    description: study ? study.challenge : WORK_DESCRIPTION,
+  });
 
   if (!study) {
     const existsUnpublished = CASE_STUDIES.some((c) => c.slug === slug);

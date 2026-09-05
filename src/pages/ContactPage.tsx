@@ -1,11 +1,14 @@
 import { FormEvent, useState } from "react";
 import { SITE, PROJECT_TYPES } from "../data/site";
 import { MagneticButton, PageHero, Reveal } from "../components/ui";
-import { useDocumentTitle } from "../lib/hooks";
+import { useSEO } from "../lib/hooks";
 import { ArrowRight, Check } from "lucide-react";
 
 export function ContactPage() {
-  useDocumentTitle("Contact — Otipu");
+  useSEO({
+    title: "Contact — Otipu",
+    description: "Share enough context for a useful first conversation. We will follow up at the email you provide.",
+  });
   const [sent, setSent] = useState(false);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
