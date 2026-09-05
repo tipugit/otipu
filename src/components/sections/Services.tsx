@@ -6,12 +6,10 @@ import { cn } from "../../lib/cn";
 import { useDesktopHover } from "../../lib/hooks";
 import { Icon } from "../icons";
 import { Reveal, SectionHeader } from "../ui";
-import { SoftAurora } from "../effects";
 
 export function Services() {
   return (
     <section id="services" className="section-padding relative overflow-hidden">
-      <SoftAurora intensity="subtle" className="opacity-40" />
       <div className="container-wide relative">
         <SectionHeader
           eyebrow="What we do"
@@ -61,7 +59,7 @@ export function ServiceCard({ service, compact = false }: { service: Service; co
       }}
       className={cn(
         "group card-premium relative overflow-hidden flex flex-col h-full p-6 sm:p-7 transition-[transform,box-shadow] duration-300",
-        "hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(70,60,160,0.4)]",
+        "hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(4,40,30,0.35)]",
         featured && "min-h-[300px] sm:min-h-[360px]",
         compact && "min-h-0"
       )}
@@ -69,15 +67,12 @@ export function ServiceCard({ service, compact = false }: { service: Service; co
       <div
         className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{
-          background: `radial-gradient(380px circle at ${glow.x}% ${glow.y}%, rgba(107,92,255,0.14), transparent 55%)`,
+          background: `radial-gradient(380px circle at ${glow.x}% ${glow.y}%, rgba(4,120,87,0.12), transparent 55%)`,
         }}
         aria-hidden
       />
       <div
-        className="relative w-12 h-12 rounded-2xl flex items-center justify-center mb-5 text-primary transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-105"
-        style={{
-          background: "linear-gradient(145deg, rgba(56,198,255,0.14), rgba(107,92,255,0.16))",
-        }}
+        className="relative w-12 h-12 rounded-2xl flex items-center justify-center mb-5 bg-primary/10 text-primary transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-105"
         aria-hidden
       >
         <Icon name={service.icon} size={20} />

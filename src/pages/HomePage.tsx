@@ -21,12 +21,12 @@ export function HomePage() {
       <Hero />
       <Trust />
       <Services />
-      <Growth />
-      <FeaturedErp />
       <Solutions />
+      <FeaturedErp />
+      <Growth />
+      <WhyOtipu />
       <Industries />
       <Process />
-      <WhyOtipu />
       <Expertise />
       <SelectedWork />
       <Credibility />

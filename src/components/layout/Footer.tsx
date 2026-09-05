@@ -60,24 +60,24 @@ const COLUMNS = [
 
 export function Footer() {
   return (
-    <footer className="bg-navy text-white">
+    <footer className="bg-background border-t border-border">
       <div className="container-wide py-16 lg:py-20">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
-            <Link to="/" className="inline-flex [&_span:last-child]:text-white">
+            <Link to="/">
               <Logo />
             </Link>
-            <p className="mt-4 text-sm text-white/55 font-body leading-relaxed max-w-[16rem]">
+            <p className="mt-4 text-sm text-muted-foreground font-body leading-relaxed max-w-[16rem]">
               Software development and digital solutions for businesses that need more than a website.
             </p>
-            <p className="mt-6 text-xs text-white/35 font-body">
+            <p className="mt-6 text-xs text-muted-foreground/70 font-body">
               © {new Date().getFullYear()} {SITE.legalName}
             </p>
           </div>
 
           {COLUMNS.map((col) => (
             <div key={col.title}>
-              <p className="text-[11px] font-mono-label uppercase tracking-[0.18em] text-white/40 mb-4">
+              <p className="text-[11px] font-mono-label uppercase tracking-[0.18em] text-muted-foreground/70 mb-4">
                 {col.title}
               </p>
               <ul className="space-y-2.5">
@@ -85,7 +85,7 @@ export function Footer() {
                   <li key={l.href}>
                     <Link
                       to={l.href}
-                      className="text-sm font-body text-white/70 hover:text-white transition-colors"
+                      className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {l.label}
                     </Link>
@@ -96,30 +96,31 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col lg:flex-row lg:items-center gap-6 justify-between">
+        <div className="mt-14 pt-8 border-t border-border flex flex-col lg:flex-row lg:items-center gap-6 justify-between">
           <div>
-            <p className="text-[11px] font-mono-label uppercase tracking-[0.18em] text-white/40 mb-2">
+            <p className="text-[11px] font-mono-label uppercase tracking-[0.18em] text-muted-foreground/70 mb-2">
               Contact
             </p>
             <a
               href={`mailto:${SITE.email}`}
-              className="text-sm font-body text-white/80 hover:text-white"
+              className="text-sm font-body text-foreground/80 hover:text-foreground"
             >
               {SITE.email}
             </a>
           </div>
-          <MagneticButton to="/contact" variant="light" magnetic>
+          <MagneticButton to="/contact" magnetic>
             Start a Project <ArrowRight size={14} />
           </MagneticButton>
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-5 text-xs text-white/35 font-body">
-          <Link to="/privacy" className="hover:text-white/70">
+        <div className="mt-8 flex flex-wrap items-center gap-5 text-xs text-muted-foreground/70 font-body">
+          <Link to="/privacy" className="hover:text-foreground">
             Privacy Policy
           </Link>
-          <Link to="/terms" className="hover:text-white/70">
+          <Link to="/terms" className="hover:text-foreground">
             Terms of Service
           </Link>
+          <span className="ml-auto text-muted-foreground/50">{SITE.domain}</span>
         </div>
       </div>
     </footer>

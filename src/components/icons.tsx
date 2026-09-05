@@ -52,6 +52,7 @@ import {
   Wallet,
   Workflow,
   Wrench,
+  Zap,
   type LucideIcon,
 } from "lucide-react";
 
@@ -109,6 +110,7 @@ export const ICONS: Record<string, LucideIcon> = {
   Wallet,
   Workflow,
   Wrench,
+  Zap,
 };
 
 export function Icon({ name, size = 20, className }: { name: string; size?: number; className?: string }) {

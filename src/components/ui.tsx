@@ -2,7 +2,6 @@ import { useRef, type MouseEvent, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "motion/react";
 import { cn } from "../lib/cn";
-import { SoftAurora } from "./effects";
 
 export { Logo, BrandMark } from "./BrandLogo";
 
@@ -40,7 +39,7 @@ export function MagneticButton({
 
   const styles = {
     primary:
-      "text-white bg-brand shadow-[0_14px_32px_-12px_rgba(107,92,255,0.55)] hover:brightness-[1.05]",
+      "text-accent-foreground bg-accent shadow-[0_14px_32px_-14px_rgba(31,224,166,0.55)] hover:brightness-[1.04]",
     outline:
       "border border-border/80 bg-white/80 text-foreground hover:border-primary/35 hover:bg-white shadow-sm",
     ghost: "border border-white/20 text-white hover:bg-white/10",
@@ -179,7 +178,6 @@ export function PageHero({
 }) {
   return (
     <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-14 overflow-hidden">
-      <SoftAurora intensity="subtle" />
       <div className="container-wide relative">
         <p className="inline-flex items-center gap-2 font-mono-label text-[11px] font-bold uppercase tracking-[0.2em] text-primary mb-4">
           <span className="h-1 w-1 rounded-full bg-primary" aria-hidden />

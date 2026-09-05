@@ -41,13 +41,10 @@ export const TRUST_BADGES = [
   "Quality-Driven Development",
 ] as const;
 
-export const HERO_CAPABILITIES = [
-  "Custom Software",
-  "ERP Systems",
-  "Mobile Apps",
-  "AI & Automation",
-  "Cloud",
-  "Digital Growth",
+export const HERO_TRUST = [
+  { icon: "Zap", label: "Modern Engineering" },
+  { icon: "ShieldCheck", label: "Reliable Delivery" },
+  { icon: "TrendingUp", label: "Built to Scale" },
 ] as const;
 
 export const HERO_TAGS = [

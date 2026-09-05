@@ -14,6 +14,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [mega, setMega] = useState<"services" | "solutions" | null>(null);
   const location = useLocation();
+  const onDark = location.pathname === "/" && !scrolled && !open;
 
   useEffect(() => {
     setOpen(false);
@@ -36,18 +37,18 @@ export function Navbar() {
     >
       <div className="container-wide h-16 lg:h-[4.25rem] flex items-center gap-4">
         <Link to="/" className="flex-shrink-0 touch-target flex items-center" aria-label="Otipu home">
-          <Logo />
+          <Logo tone={onDark ? "light" : "dark"} />
         </Link>
 
         <nav className="hidden 2xl:flex flex-1 items-center justify-center gap-0.5" aria-label="Primary">
           {NAV.map((item) => (
-            <NavItem key={item.href} item={item} mega={mega} setMega={setMega} />
+            <NavItem key={item.href} item={item} mega={mega} setMega={setMega} onDark={onDark} />
           ))}
         </nav>
 
         <nav className="hidden lg:flex 2xl:hidden flex-1 items-center justify-center gap-0.5" aria-label="Primary">
           {COMPACT_NAV.map((item) => (
-            <NavItem key={item.href} item={item} mega={mega} setMega={setMega} />
+            <NavItem key={item.href} item={item} mega={mega} setMega={setMega} onDark={onDark} />
           ))}
         </nav>
 
@@ -59,7 +60,10 @@ export function Navbar() {
           </div>
           <button
             type="button"
-            className="lg:hidden touch-target flex items-center justify-center rounded-full hover:bg-muted"
+            className={cn(
+              "lg:hidden touch-target flex items-center justify-center rounded-full transition-colors",
+              onDark ? "text-white hover:bg-white/10" : "text-foreground hover:bg-muted"
+            )}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -89,10 +93,12 @@ function NavItem({
   item,
   mega,
   setMega,
+  onDark,
 }: {
   item: { label: string; href: string; mega?: "services" | "solutions" };
   mega: "services" | "solutions" | null;
   setMega: (v: "services" | "solutions" | null) => void;
+  onDark: boolean;
 }) {
   const hasMega = Boolean(item.mega);
   const activeMega = item.mega && mega === item.mega;
@@ -103,7 +109,13 @@ function NavItem({
         type="button"
         className={cn(
           "inline-flex items-center gap-1 px-2.5 py-2 rounded-lg text-[13px] font-medium font-body transition-colors",
-          activeMega ? "text-foreground bg-muted/70" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+          onDark
+            ? activeMega
+              ? "text-white bg-white/15"
+              : "text-white/70 hover:text-white hover:bg-white/10"
+            : activeMega
+              ? "text-foreground bg-muted/70"
+              : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
         )}
         aria-expanded={activeMega}
         onClick={() => setMega(activeMega ? null : item.mega!)}
@@ -121,7 +133,13 @@ function NavItem({
       className={({ isActive }) =>
         cn(
           "px-2.5 py-2 rounded-lg text-[13px] font-medium font-body transition-colors",
-          isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+          onDark
+            ? isActive
+              ? "text-white"
+              : "text-white/70 hover:text-white hover:bg-white/10"
+            : isActive
+              ? "text-foreground"
+              : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
         )
       }
       onMouseEnter={() => setMega(null)}

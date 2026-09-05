@@ -45,7 +45,7 @@ export function ErpVisual({ active }: { active: string | null }) {
             {[40, 62, 48, 78, 55, 88, 70].map((h, i) => (
               <span
                 key={i}
-                className="flex-1 rounded-sm bg-gradient-to-t from-[#6d5ef6]/40 to-[#4f7cff]/80"
+                className="flex-1 rounded-sm bg-gradient-to-t from-primary/40 to-accent/80"
                 style={{ height: `${h}%` }}
               />
             ))}
@@ -100,7 +100,7 @@ function Panel({
       className={cn(
         "rounded-2xl border bg-white/[0.04] p-3 transition-all duration-300",
         on ? "border-white/15 opacity-100" : "border-white/5 opacity-40",
-        active === id && "border-primary/50 shadow-[0_0_0_1px_rgba(109,94,246,0.25)]",
+        active === id && "border-primary/50 shadow-[0_0_0_1px_rgba(31,224,166,0.3)]",
         className
       )}
     >
@@ -160,14 +160,14 @@ export function ArchitectureVisual() {
   const [active, setActive] = useState<string | null>(null);
 
   const layers = [
-    { id: "interface", title: "Interface", tone: "from-[#8b7cff] to-[#6d5ef6]" },
-    { id: "application", title: "Application", tone: "from-[#7b74f6] to-[#5b6ef0]" },
-    { id: "api", title: "API", tone: "from-[#6d5ef6] to-[#4f7cff]" },
-    { id: "logic", title: "Business Logic", tone: "from-[#5d6ef0] to-[#3d7cff]" },
-    { id: "database", title: "Database", tone: "from-[#4f7cff] to-[#3b82f6]" },
-    { id: "infrastructure", title: "Infrastructure", tone: "from-[#3b82f6] to-[#2563eb]" },
-    { id: "security", title: "Security", tone: "from-[#2563eb] to-[#1e3a8a]" },
-    { id: "monitoring", title: "Monitoring", tone: "from-[#1e3a8a] to-[#0b1428]" },
+    { id: "interface", title: "Interface", tone: "from-[#5eead4] to-[#2dd4bf]" },
+    { id: "application", title: "Application", tone: "from-[#34d399] to-[#10b981]" },
+    { id: "api", title: "API", tone: "from-[#10b981] to-[#059669]" },
+    { id: "logic", title: "Business Logic", tone: "from-[#059669] to-[#047857]" },
+    { id: "database", title: "Database", tone: "from-[#047857] to-[#065f46]" },
+    { id: "infrastructure", title: "Infrastructure", tone: "from-[#065f46] to-[#064e3b]" },
+    { id: "security", title: "Security", tone: "from-[#064e3b] to-[#053b30]" },
+    { id: "monitoring", title: "Monitoring", tone: "from-[#053b30] to-[#04130f]" },
   ];
 
   const current = layers.find((l) => l.id === active);

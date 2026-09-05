@@ -23,13 +23,7 @@ export function Solutions({ hideHeader = false }: { hideHeader?: boolean }) {
                 to={`/solutions#${item.slug}`}
                 className="group card-premium p-6 h-full flex flex-col hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-300 scroll-mt-28"
               >
-                <div
-                  className="w-10 h-10 rounded-xl text-primary flex items-center justify-center mb-4"
-                  style={{
-                    background:
-                      "linear-gradient(145deg, rgba(56,198,255,0.14), rgba(107,92,255,0.16))",
-                  }}
-                >
+                <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
                   <Icon name={item.icon} size={18} />
                 </div>
                 <h3 className="font-display font-bold text-[1.05rem] mb-2 leading-snug">{item.title}</h3>

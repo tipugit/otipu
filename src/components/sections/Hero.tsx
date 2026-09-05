@@ -1,34 +1,44 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowRight } from "lucide-react";
-import { HERO_CAPABILITIES, HERO_WORDS } from "../../data/site";
+import { HERO_TRUST, HERO_WORDS } from "../../data/site";
 import { MagneticButton, Reveal } from "../ui";
 import { HeroVisual } from "../visuals/HeroVisual";
-import { SoftAurora, ParticleField } from "../effects";
+import { CurveDivider } from "../effects";
+import { Icon } from "../icons";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[100dvh] flex items-center pt-20 overflow-hidden">
-      <SoftAurora intensity="strong" />
-      <ParticleField />
+    <section className="relative min-h-[100dvh] flex items-center bg-navy pt-24 pb-20 sm:pb-24 overflow-hidden">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-1/2 right-[2%] -translate-y-1/2 h-[60vw] w-[60vw] max-h-[620px] max-w-[620px] rounded-full opacity-70 blur-3xl"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(31,224,166,0.24) 0%, rgba(34,211,238,0.12) 45%, transparent 72%)",
+        }}
+      />
 
-      <div className="relative z-10 container-wide py-12 lg:py-16 w-full">
+      <div className="relative z-10 container-wide py-8 w-full">
         <div className="grid lg:grid-cols-[1fr_0.92fr] gap-12 lg:gap-10 items-center">
           <div className="max-w-xl">
             <Reveal>
-              <p className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/60 backdrop-blur-md px-3.5 py-1.5 text-[11px] font-mono-label font-bold uppercase tracking-[0.18em] text-primary mb-6 shadow-sm">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                Software Development & Digital Solutions
+              <p className="inline-flex items-center gap-2.5 text-[11px] font-mono-label font-bold uppercase tracking-[0.22em] text-white/50 mb-6">
+                Technology
+                <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
+                Creativity
+                <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
+                Real Impact
               </p>
             </Reveal>
             <Reveal delay={0.06}>
               <Headline />
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mt-5 mb-8 text-muted-foreground font-body text-[0.98rem] sm:text-base leading-[1.75]">
-                Otipu is a full-service technology partner helping businesses design, build,
-                modernize and scale powerful digital products, internal systems, enterprise software
-                and digital experiences.
+              <p className="mt-5 mb-8 text-white/60 font-body text-[0.98rem] sm:text-base leading-[1.75]">
+                Otipu designs and builds custom software, ERP systems, mobile apps, websites and
+                digital solutions that help businesses work smarter, grow faster and make a
+                meaningful impact.
               </p>
             </Reveal>
             <Reveal delay={0.18}>
@@ -36,19 +46,20 @@ export function Hero() {
                 <MagneticButton to="/contact" magnetic>
                   Start a Project <ArrowRight size={15} />
                 </MagneticButton>
-                <MagneticButton to="/services" variant="outline">
-                  Explore Our Services
+                <MagneticButton to="/services" variant="ghost">
+                  Explore Services
                 </MagneticButton>
               </div>
             </Reveal>
             <Reveal delay={0.24}>
-              <ul className="mt-9 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                {HERO_CAPABILITIES.map((item) => (
+              <ul className="mt-10 flex flex-wrap gap-x-7 gap-y-3">
+                {HERO_TRUST.map((item) => (
                   <li
-                    key={item}
-                    className="rounded-2xl border border-border/70 bg-white/55 backdrop-blur-sm px-3 py-2.5 text-[12px] font-semibold text-foreground/75"
+                    key={item.label}
+                    className="inline-flex items-center gap-2 text-[13px] font-semibold text-white/70"
                   >
-                    {item}
+                    <Icon name={item.icon} size={16} className="text-accent shrink-0" />
+                    {item.label}
                   </li>
                 ))}
               </ul>
@@ -59,6 +70,8 @@ export function Hero() {
           </Reveal>
         </div>
       </div>
+
+      <CurveDivider fill="var(--background)" />
     </section>
   );
 }
@@ -76,11 +89,11 @@ function Headline() {
   const word = HERO_WORDS[index];
 
   return (
-    <h1 className="text-[2.1rem] min-[400px]:text-[2.45rem] sm:text-[3rem] lg:text-[3.15rem] font-extrabold font-display tracking-tight leading-[1.12]">
+    <h1 className="text-[2.1rem] min-[400px]:text-[2.45rem] sm:text-[3rem] lg:text-[3.15rem] font-extrabold font-display tracking-tight leading-[1.12] text-white">
       We build{" "}
       <span className="relative inline-block min-w-[11ch] align-bottom">
         {reduced ? (
-          <span className="text-gradient">software</span>
+          <span className="text-accent">software</span>
         ) : (
           <AnimatePresence mode="wait">
             <motion.span
@@ -89,7 +102,7 @@ function Headline() {
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: -14, filter: "blur(8px)" }}
               transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-              className="text-gradient absolute left-0 top-0 whitespace-nowrap"
+              className="text-accent absolute left-0 top-0 whitespace-nowrap"
             >
               {word.toLowerCase()}
             </motion.span>

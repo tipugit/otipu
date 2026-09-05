@@ -58,23 +58,28 @@ export function HeroVisual() {
         className="absolute inset-[12%] rounded-full blur-3xl opacity-60"
         style={{
           background:
-            "radial-gradient(circle, rgba(56,198,255,0.35), rgba(107,92,255,0.28), transparent 70%)",
+            "radial-gradient(circle, rgba(31,224,166,0.35), rgba(34,211,238,0.22), transparent 70%)",
         }}
         aria-hidden
       />
 
       <motion.div
-        className="absolute inset-[6%] rounded-full border border-primary/10"
+        className="absolute inset-[6%] rounded-full border border-white/10"
         animate={reduced ? undefined : { rotate: 360 }}
         transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
         style={{ x: ring1x, y: ring1y }}
         aria-hidden
       />
       <motion.div
-        className="absolute inset-[16%] rounded-full border border-cyan/15"
+        className="absolute inset-[16%] rounded-full border border-accent/20"
         animate={reduced ? undefined : { rotate: -360 }}
         transition={{ duration: 38, repeat: Infinity, ease: "linear" }}
         style={{ x: ring2x, y: ring2y }}
+        aria-hidden
+      />
+      <div
+        className="absolute left-1/2 top-[84%] -translate-x-1/2 h-[16%] w-[56%] rounded-full blur-2xl opacity-70"
+        style={{ background: "radial-gradient(ellipse, rgba(0,0,0,0.55) 0%, transparent 72%)" }}
         aria-hidden
       />
 
@@ -112,7 +117,7 @@ function FloatingTag({
 
   return (
     <motion.span
-      className="absolute z-10 hidden sm:inline-flex items-center rounded-full border border-white/70 bg-white/75 backdrop-blur-md px-3 py-1.5 text-[11px] font-semibold font-body text-foreground/75 shadow-[0_8px_24px_-12px_rgba(70,60,160,0.35)]"
+      className="absolute z-10 hidden sm:inline-flex items-center rounded-full border border-white/80 bg-white/90 backdrop-blur-md px-3 py-1.5 text-[11px] font-semibold font-body text-foreground/80 shadow-[0_8px_24px_-12px_rgba(4,19,15,0.45)]"
       style={{ ...pos, x, y }}
     >
       {item.tag}

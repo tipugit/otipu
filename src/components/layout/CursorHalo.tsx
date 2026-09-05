@@ -44,7 +44,7 @@ export function CursorHalo() {
       <div
         className="w-10 h-10 rounded-full transition-transform duration-200"
         style={{
-          background: "radial-gradient(circle, rgba(109,94,246,0.28), rgba(79,124,255,0.08) 60%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(31,224,166,0.3), rgba(4,120,87,0.1) 60%, transparent 70%)",
           transform: label ? "scale(1.7)" : "scale(1)",
         }}
       />

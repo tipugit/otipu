@@ -1,7 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { MagneticButton, Reveal } from "../ui";
 import { BrandMark } from "../BrandLogo";
-import { GradientOrb } from "../effects";
 
 export function Cta() {
   return (
@@ -9,10 +8,16 @@ export function Cta() {
       <div className="container-wide">
         <Reveal>
           <div className="relative overflow-hidden rounded-[1.75rem] sm:rounded-[2rem] bg-navy px-6 py-14 sm:px-12 sm:py-16 text-center">
-            <GradientOrb className="-top-16 right-6 w-64 h-64 opacity-40" color="#6b5cff" />
-            <GradientOrb className="-bottom-20 left-4 w-72 h-72 opacity-25" color="#38c6ff" delay={1.5} />
             <div
-              className="absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#8b7cff] to-transparent"
+              className="pointer-events-none absolute inset-0 opacity-80"
+              style={{
+                background:
+                  "radial-gradient(60% 90% at 50% 0%, rgba(31,224,166,0.16) 0%, transparent 60%)",
+              }}
+              aria-hidden
+            />
+            <div
+              className="absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-accent/60 to-transparent"
               aria-hidden
             />
             <div className="relative z-10 mx-auto max-w-xl">

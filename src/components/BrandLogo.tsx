@@ -29,7 +29,7 @@ export function BrandMark({
           className="absolute inset-[8%] rounded-full blur-3xl animate-logo-glow"
           style={{
             background:
-              "radial-gradient(circle, rgba(56,198,255,0.55) 0%, rgba(107,92,255,0.4) 45%, transparent 70%)",
+              "radial-gradient(circle, rgba(31,224,166,0.5) 0%, rgba(34,211,238,0.3) 45%, transparent 70%)",
           }}
           aria-hidden
         />
@@ -41,7 +41,7 @@ export function BrandMark({
         height={1024}
         draggable={false}
         className={cn(
-          "relative z-10 w-full h-full object-contain select-none drop-shadow-[0_20px_40px_rgba(79,70,229,0.28)]",
+          "relative z-10 w-full h-full object-contain select-none drop-shadow-[0_20px_40px_rgba(4,120,87,0.3)]",
           motionOn && size === "hero" && "animate-logo-float"
         )}
         animate={
@@ -62,9 +62,11 @@ export function BrandMark({
 export function Logo({
   compact = false,
   animated = true,
+  tone = "dark",
 }: {
   compact?: boolean;
   animated?: boolean;
+  tone?: "dark" | "light";
 }) {
   return (
     <span className="inline-flex items-center gap-2.5">
@@ -72,7 +74,8 @@ export function Logo({
       <span
         className={cn(
           "font-display font-extrabold tracking-tight",
-          compact ? "text-base" : "text-lg"
+          compact ? "text-base" : "text-lg",
+          tone === "light" ? "text-white" : "text-foreground"
         )}
       >
         otipu

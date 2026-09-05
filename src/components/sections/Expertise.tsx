@@ -2,14 +2,12 @@ import { useState } from "react";
 import { EXPERTISE } from "../../data/content";
 import { cn } from "../../lib/cn";
 import { Reveal, SectionHeader } from "../ui";
-import { GradientOrb } from "../effects";
 
 export function Expertise({ hideHeader = false }: { hideHeader?: boolean }) {
   const [open, setOpen] = useState<string | null>(null);
 
   return (
     <section id="expertise" className="section-padding relative overflow-hidden bg-navy text-white">
-      <GradientOrb className="top-0 right-10 w-72 h-72 opacity-25" color="#4f7cff" />
       <div className="container-wide relative">
         {!hideHeader && (
           <SectionHeader
